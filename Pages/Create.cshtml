@@ -1,0 +1,167 @@
+﻿@page "/Create/{code?}"
+
+@model LaunchMyHub.Pages.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container mt-4">
+    @if (!Model.OpenParcial)
+    {
+        <h2 class="mx-2">@ViewData["Title"] <small class="text-muted">Hub Master</small></h2>
+        <hr />
+    }
+    
+    <form method="post">
+        <input type="hidden" asp-for="OpenParcial" />
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+        <div class="container p-3">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label asp-for="HubMaster.Email" class="control-label">Email</label>
+                    <input asp-for="HubMaster.Email" class="form-control" placeholder="Enter email">
+                    <span asp-validation-for="HubMaster.Email" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="HubMaster.ContactName" class="control-label"></label>
+                    <input asp-for="HubMaster.ContactName" class="form-control" />
+                    <span asp-validation-for="HubMaster.ContactName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label asp-for="HubMaster.Password" class="control-label"></label>
+                    <input asp-for="HubMaster.Password" type="password" class="form-control" />
+                    <span asp-validation-for="HubMaster.Password" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="HubMaster.OrganizationName" class="control-label"></label>
+                    <input asp-for="HubMaster.OrganizationName" class="form-control" />
+                    <span asp-validation-for="HubMaster.OrganizationName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label asp-for="HubMaster.ConfirmPassword" class="control-label"></label>
+                    <input asp-for="HubMaster.ConfirmPassword" type="password" class="form-control" />
+                    <span asp-validation-for="HubMaster.ConfirmPassword" class="text-danger"></span>
+
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="HubMaster.PhoneNumber" class="control-label"></label>
+                    <input asp-for="HubMaster.PhoneNumber" class="form-control" />
+                    <span asp-validation-for="HubMaster.PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label asp-for="HubMaster.Website" class="control-label"></label>
+                    <input asp-for="HubMaster.Website" class="form-control" />
+                    <span asp-validation-for="HubMaster.Website" class="text-danger"></span>
+
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="HubMaster.PreferredSubdomain" class="control-label"></label>
+                    <input asp-for="HubMaster.PreferredSubdomain" class="form-control" />
+                    <span asp-validation-for="HubMaster.PreferredSubdomain" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label asp-for="HubMaster.HubTypeId" class="control-label"></label>
+                    <select asp-for="HubMaster.HubTypeId" class="form-control" asp-items="ViewBag.HubTypeId"></select>
+
+                </div>
+                <div class="col-md-6 type-other d-none">
+                    <label asp-for="HubMaster.HubTypeOther" class="control-label"></label>
+                    <input asp-for="HubMaster.HubTypeOther" class="form-control" />
+                    <span asp-validation-for="HubMaster.HubTypeOther" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label asp-for="HubMaster.ReferralSourceId" class="control-label"></label>
+                    <select asp-for="HubMaster.ReferralSourceId" class="form-control" asp-items="ViewBag.ReferralSourceId"></select>
+
+                </div>
+                <div class="col-md-6 source-other d-none">
+                    <label asp-for="HubMaster.ReferralSourceOther" class="control-label"></label>
+                    <input asp-for="HubMaster.ReferralSourceOther" class="form-control" />
+                    <span asp-validation-for="HubMaster.ReferralSourceOther" class="text-danger"></span>
+
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label asp-for="HubMaster.FeeType" class="control-label"></label>
+                    <select asp-for="HubMaster.FeeType" class="form-control" asp-items="@ViewBag.FeeTypeSelectList"></select>
+                    <span asp-validation-for="HubMaster.FeeType" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 d-flex align-items-center">
+                    <div class="form-check pt-4">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="HubMaster.NonProfit" /> @Html.DisplayNameFor(model => model.HubMaster.NonProfit)
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="HubMaster.BriefDescription" class="control-label"></label>
+                <TextArea asp-for="HubMaster.BriefDescription" class="form-control"> </TextArea>
+                <span asp-validation-for="HubMaster.BriefDescription" class="text-danger"></span>
+            </div>
+        </div>
+
+    
+
+        <!-- Button at the bottom -->
+        <div class="text-center mt-2">
+            <input type="submit" value="Create" class="btn btn-primary btn-form">
+            @if (!Model.OpenParcial)
+            {
+                <a asp-page="Index" class="btn btn-secondary btn-form">Back to List</a>
+            }
+        </div>
+
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+   
+
+        var referralSourceSelect = document.querySelector('select[name="HubMaster.ReferralSourceId"]');
+        var referralSourceOtherDiv = document.querySelector('.source-other');
+        var hubTypeSelect = document.querySelector('select[name="HubMaster.HubTypeId"]');
+        var hubTypeOtherDiv = document.querySelector('.type-other');
+
+        function toggleOtherDiv(selectElement, otherDiv) {
+            if (selectElement.value === '-1') {
+                otherDiv.classList.remove('d-none');
+            } else {
+                otherDiv.classList.add('d-none');
+            }
+        }
+
+        referralSourceSelect.addEventListener('change', function () {
+            toggleOtherDiv(this, referralSourceOtherDiv);
+        });
+
+        hubTypeSelect.addEventListener('change', function () {
+            toggleOtherDiv(this, hubTypeOtherDiv);
+        });
+
+       
+        // Initial check on page load
+        toggleOtherDiv(referralSourceSelect, referralSourceOtherDiv);
+        toggleOtherDiv(hubTypeSelect, hubTypeOtherDiv);
+    });
+</script>

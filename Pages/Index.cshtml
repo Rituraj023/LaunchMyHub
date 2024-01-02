@@ -1,0 +1,159 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Hub Masters";
+}
+
+<div class="row my-3">
+    <div class="col">
+        <h2 class="mx-2">@ViewData["Title"]</h2>
+    </div>
+    <div class="col-auto">
+        <form method="get" class="my-2 my-lg-0">
+            <div class="input-group">
+                <input type="text" name="searchString" class="form-control" placeholder="Search" aria-label="Search" value="@Model.CurrentFilter">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <!-- Sortable Column Headers -->
+            <th>
+                @await Html.PartialAsync("_SortableColumnHeader", new SortableColumnHeaderViewModel(
+                "Email",
+                "Email",
+                Model.CurrentSortColumn,
+                Model.CurrentSort,
+                Model.CurrentFilter,
+                Model.CurrentPage,
+                Model.PageSize))
+            </th>
+            <th>
+                @await Html.PartialAsync("_SortableColumnHeader", new SortableColumnHeaderViewModel(
+                "Organization",
+                "Org",
+                Model.CurrentSortColumn,
+                Model.CurrentSort,
+                Model.CurrentFilter,
+                Model.CurrentPage,
+                Model.PageSize))
+            </th>
+            <th>
+                @await Html.PartialAsync("_SortableColumnHeader", new SortableColumnHeaderViewModel(
+                "Contact",
+                "Cont",
+                Model.CurrentSortColumn,
+                Model.CurrentSort,
+                Model.CurrentFilter,
+                Model.CurrentPage,
+                Model.PageSize))
+                
+                <!-- Additional sorting functionality can be added similarly -->
+            </th>
+            <th>
+                @await Html.PartialAsync("_SortableColumnHeader", new SortableColumnHeaderViewModel(
+                "Phone",
+                "Phone",
+                Model.CurrentSortColumn,
+                Model.CurrentSort,
+                Model.CurrentFilter,
+                Model.CurrentPage,
+                Model.PageSize))
+
+                <!-- Additional sorting functionality can be added similarly -->
+            </th>
+            <th>
+                @await Html.PartialAsync("_SortableColumnHeader", new SortableColumnHeaderViewModel(
+                "Fee Type",
+                "FeeType",
+                Model.CurrentSortColumn,
+                Model.CurrentSort,
+                Model.CurrentFilter,
+                Model.CurrentPage,
+                Model.PageSize))
+
+                <!-- Additional sorting functionality can be added similarly -->
+            </th>
+            <th>
+                @await Html.PartialAsync("_SortableColumnHeader", new SortableColumnHeaderViewModel(
+                "Non-Profit",
+                "NonProfit",
+                Model.CurrentSortColumn,
+                Model.CurrentSort,
+                Model.CurrentFilter,
+                Model.CurrentPage,
+                Model.PageSize))
+
+                <!-- Additional sorting functionality can be added similarly -->
+            </th>
+            <th>
+                @await Html.PartialAsync("_SortableColumnHeader", new SortableColumnHeaderViewModel(
+                "Hub Type",
+                "HubType",
+                Model.CurrentSortColumn,
+                Model.CurrentSort,
+                Model.CurrentFilter,
+                Model.CurrentPage,
+                Model.PageSize))
+
+                <!-- Additional sorting functionality can be added similarly -->
+            </th>
+            <th>
+                @await Html.PartialAsync("_SortableColumnHeader", new SortableColumnHeaderViewModel(
+                "Source",
+                "Source",
+                Model.CurrentSortColumn,
+                Model.CurrentSort,
+                Model.CurrentFilter,
+                Model.CurrentPage,
+                Model.PageSize))
+
+                <!-- Additional sorting functionality can be added similarly -->
+            </th>
+            <!-- Additional columns -->
+            <th class="text-end">
+                <a class="btn btn-outline-success btn-sm" asp-page="Create" title="Create New">
+                    <i class="bi bi-plus"></i>
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.HubMaster)
+        {
+            <tr>
+                <td>@item.Email</td>
+                <td>@item.OrganizationName</td>
+                <td>@item.ContactName</td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.FeeType</td>
+                <td>@item.NonProfit</td>
+
+                <td>@(item.HubTypeId.HasValue ? item.HubType.Name : "Other" )</td>
+                <td>@(item.ReferralSourceId.HasValue ? item.ReferralSource.Name : "Other")</td>
+                <!-- Additional cells -->
+                <td class="text-end nowrap">
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-outline-primary btn-sm" asp-page="Edit" asp-route-id="@item.Id" title="Edit">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <a class="btn btn-outline-danger btn-sm" asp-page="Delete" asp-route-id="@item.Id" title="Delete">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                        <a class="btn btn-outline-info btn-sm" asp-page="Details" asp-route-id="@item.Id" title="View">
+                            <i class="bi bi-eye"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@await Html.PartialAsync("_Pagination", new PaginationViewModel(Model.HubMaster, Model.CurrentFilter))

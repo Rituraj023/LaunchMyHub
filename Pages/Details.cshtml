@@ -1,0 +1,108 @@
+﻿@page
+@model LaunchMyHub.Pages.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container mt-4">
+    <h2 class="mx-2">@ViewData["Title"] <small class="text-muted">Hub Master</small></h2>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.HubMaster.Email)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HubMaster.Email)
+                </dd>                
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.HubMaster.ContactName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HubMaster.ContactName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.HubMaster.OrganizationName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HubMaster.OrganizationName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.HubMaster.PhoneNumber)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HubMaster.PhoneNumber)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.HubMaster.HubType)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HubMaster.HubType.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.HubMaster.HubTypeOther)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HubMaster.HubTypeOther)
+                </dd>
+
+            </dl>
+        </div>
+        <div class="col-md-6">
+            <dl class="row">
+                
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.HubMaster.FeeType)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HubMaster.FeeType)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.HubMaster.Website)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HubMaster.Website)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.HubMaster.NonProfit)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HubMaster.NonProfit)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.HubMaster.PreferredSubdomain)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HubMaster.PreferredSubdomain)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.HubMaster.BriefDescription)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HubMaster.BriefDescription)
+                </dd>
+              
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.HubMaster.ReferralSource)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HubMaster.ReferralSource.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.HubMaster.ReferralSourceOther)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.HubMaster.ReferralSourceOther)
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div>
+        <a asp-page="Edit" asp-route-id="@Model.HubMaster?.Id" class="btn btn-primary btn-form">Edit</a>
+        <a asp-page="Index" class="btn btn-secondary btn-form">Back to List</a>
+    </div>
+
+</div>

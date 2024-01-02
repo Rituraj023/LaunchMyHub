@@ -1,0 +1,14 @@
+﻿@model LaunchMyHub.DTOs.SortableColumnHeaderViewModel
+
+<a asp-page="./Index"
+   asp-route-sortColumn="@Model.SortField"
+   asp-route-sortOrder="@(Model.CurrentSortField == Model.SortField && Model.CurrentSortOrder == "asc" ? "desc" : "asc")"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   asp-route-currentPage="@Model.CurrentPage">
+    @Model.HeaderTitle
+    @if (Model.CurrentSortField == Model.SortField)
+    {
+        <i class="@(Model.CurrentSortField == Model.SortField ? (Model.CurrentSortOrder == "asc" ? "bi bi-sort-alpha-down" : "bi bi-sort-alpha-up") : "bi bi-sort-alpha-down")"></i>
+    }
+</a>
+
